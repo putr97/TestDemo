@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CrudModel>
+ @*@inject TestDemo.Repository.ICrudRepository RP*@
+
+@{ 
+    if (Model?.Count() > 0)
+    {
+        //var list = RP.GetData();
+        //list.Count();
+<table class="table table-bordered table-light table-striped">
+    <tr>
+       @*@Html.DisplayNameFor(model => model.First().Id)*@
+        <th><label asp-for="First().Id"> </label></th>
+        <th><label asp-for="First().Name"> </label></th>
+        <th><label asp-for="First().City"> </label></th>
+    </tr>
+
+    @foreach (CrudModel item in Model)
+    {
+        <tr>
+            <td><label> @item.Id</label></td>
+            <td><label> @item.Name</label></td>
+            <td><label> @item.City</label></td>
+        </tr>
+    }
+
+
+</table>
+
+}
+
+        }

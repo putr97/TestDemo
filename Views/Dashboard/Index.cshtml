@@ -1,0 +1,76 @@
+﻿@model TestDemo.Models.TBL_TRN_REGISTRATION
+
+<partial name="_ValidationScriptsPartial" />
+<style>
+    .bg-secondary {
+        background-color: #f4f5f7 !important;
+    }
+</style>
+
+<h1>Welcome to Registration</h1>
+
+<form id="Form1" method="post" asp-action="Index" asp-controller="Regis">
+    @if (ViewBag.Msg != null)
+    {
+
+        <div class="@ViewBag.alertType" role="alert">
+            <div asp-validation-summary="All">@ViewBag.Msg</div>
+        </div>
+      
+
+        ViewBag.Msg = null;
+    }
+
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="USERID">USERID</label>
+                <input asp-for="USERID" class="form-control"/>
+                <span asp-validation-for="USERID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="USERNAME">USER NAME</label>
+                <input asp-for="USERNAME" class="form-control"/>
+                <span asp-validation-for="USERNAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PASSWORD">PASSWORD</label>
+                <input asp-for="PASSWORD" class="form-control" />
+                <span asp-validation-for="PASSWORD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CONFIRMPASS">CONFIRMATION PASSWORD</label>
+                <input asp-for="CONFIRMPASS" class="form-control" />
+                <span asp-validation-for="CONFIRMPASS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EMAIL">EMAIL</label>
+                <input asp-for="EMAIL" class="form-control" />
+                <span asp-validation-for="EMAIL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SEXID">SEXID</label>
+                <input asp-for="SEXID" class="form-control" />
+                <span asp-validation-for="SEXID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MARITALID">MARITALID</label>
+                <input asp-for="MARITALID" class="form-control" />
+                <span asp-validation-for="MARITALID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    @{ if (ViewBag.ModelList != null)
+        { <div class="card">
+                <div class="card-body">
+                    <partial name="_ListPartialRegis" model="@ViewBag.ModelList" />
+                </div>
+            </div>
+        }}
+
+
+</form>
